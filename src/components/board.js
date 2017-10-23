@@ -3,7 +3,7 @@ import Square from './square';
 
 function Board(props) {
   function renderSquare(i) {
-    return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />
+    return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />;
   }
   return (
     <div>
@@ -23,7 +23,7 @@ function Board(props) {
         {renderSquare(8)}
       </div>
     </div>
-  )
+  );
 }
 
 export default Board;

@@ -1,23 +1,17 @@
 import React from 'react';
-import Board from './board';
-import calculateWinner from './calculate';
-import './index.css';
+import Board from '../components/board';
+import calculateWinner from '../utils/calculate';
+import '../index.css';
+import * as gameActions from '../actions/game';
 
 import { connect } from 'react-redux';
 
 class Game extends React.Component {
   handleClick(i) {
-    this.props.dispatch({
-      type: 'HANDLE_CLICK',
-      index: i
-    });
+    this.props.dispatch(gameActions.handleClick(i));
   }
   jumpTo(step) {
-    this.props.dispatch({
-      type: 'JUMP_TO',
-      stepNumber: step,
-      xIsNext: (step % 2) === 0
-    });
+    this.props.dispatch(gameActions.jumpTo(step));
   }
   render() {
     const history = this.props.history;

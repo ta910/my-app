@@ -1,4 +1,4 @@
-import calculateWinner from '../calculate';
+import calculateWinner from '../utils/calculate';
 
 const initialState = {
   history: [{
@@ -6,12 +6,12 @@ const initialState = {
   }],
   stepNumber: 0,
   xIsNext: true
-}
+};
 
 const GamesReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'HANDLE_CLICK':
-      const i = action.index
+      const i = action.index;
       const history = state.history.slice(0, state.stepNumber + 1);
       const current = history[history.length - 1];
       const squares = current.squares.slice();
