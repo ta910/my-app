@@ -1,9 +1,7 @@
-'use strict';
-
 export function handleClick(i) {
   return {
     type: 'HANDLE_CLICK',
-    index: i
+    index: i,
   };
 }
 
@@ -11,6 +9,6 @@ export function jumpTo(step) {
   return {
     type: 'JUMP_TO',
     stepNumber: step,
-    xIsNext: (step % 2) === 0
+    xIsNext: (step % 2) === 0,
   };
 }

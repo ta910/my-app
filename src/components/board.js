@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import Square from './square';
 
 function Board(props) {
@@ -25,5 +26,10 @@ function Board(props) {
     </div>
   );
 }
+
+Board.propTypes = {
+  squares: PropTypes.arrayOf(PropTypes.array),
+  onClick: PropTypes.func,
+}.isRequired;
 
 export default Board;

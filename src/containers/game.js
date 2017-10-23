@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Board from '../components/board';
 import calculateWinner from '../utils/calculate';
 import '../index.css';
 import * as gameActions from '../actions/game';
-
-import { connect } from 'react-redux';
 
 class Game extends React.Component {
   handleClick(i) {
@@ -19,7 +19,7 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
+        `Go to move #${move}` :
         'Go to game start';
       return (
         <li key={move}>
@@ -30,9 +30,9 @@ class Game extends React.Component {
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = `Winner: ${winner}`;
     } else {
-      status = 'Next player: ' + (this.props.xIsNext ? 'X' : 'O');
+      status = `Next player: ${this.props.xIsNext ? 'X' : 'O'}`;
     }
     return (
       <div className="game">
@@ -50,5 +50,12 @@ class Game extends React.Component {
     );
   }
 }
+
+Game.propTypes = {
+  dispatch: PropTypes.func,
+  history: PropTypes.arrayOf(PropTypes.node),
+  stepNumber: PropTypes.number,
+  xIsNext: PropTypes.bool,
+}.isRequired;
 
 export default connect(state => state)(Game);
