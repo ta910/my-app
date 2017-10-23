@@ -20,7 +20,6 @@ class Game extends React.Component {
     });
   }
   render() {
-    console.log(this.props);
     const history = this.props.history;
     const current = history[this.props.stepNumber];
     const winner = calculateWinner(current.squares);
