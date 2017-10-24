@@ -1,23 +1,17 @@
 import React from 'react';
-import Board from './board';
-import calculateWinner from './calculate';
-import './index.css';
-
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Board from '../components/board';
+import calculateWinner from '../utils/calculate';
+import '../index.css';
+import * as gameActions from '../actions/game';
 
 class Game extends React.Component {
   handleClick(i) {
-    this.props.dispatch({
-      type: 'HANDLE_CLICK',
-      index: i
-    });
+    this.props.dispatch(gameActions.handleClick(i));
   }
   jumpTo(step) {
-    this.props.dispatch({
-      type: 'JUMP_TO',
-      stepNumber: step,
-      xIsNext: (step % 2) === 0
-    });
+    this.props.dispatch(gameActions.jumpTo(step));
   }
   render() {
     const history = this.props.history;
@@ -25,7 +19,7 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
+        `Go to move #${move}` :
         'Go to game start';
       return (
         <li key={move}>
@@ -36,9 +30,9 @@ class Game extends React.Component {
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = `Winner: ${winner}`;
     } else {
-      status = 'Next player: ' + (this.props.xIsNext ? 'X' : 'O');
+      status = `Next player: ${this.props.xIsNext ? 'X' : 'O'}`;
     }
     return (
       <div className="game">
@@ -56,5 +50,12 @@ class Game extends React.Component {
     );
   }
 }
+
+Game.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.array.isRequired,
+  stepNumber: PropTypes.number.isRequired,
+  xIsNext: PropTypes.bool.isRequired,
+};
 
 export default connect(state => state)(Game);

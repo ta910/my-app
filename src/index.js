@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import GamesReducer from './reducers/game';
-import Application from './application';
+import Game from './containers/game';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(
     <Provider store={store}>
-      <Application />
+      <Game />
     </Provider>,
-    document.getElementById('root')
+    document.getElementById('root'),
   );
 });

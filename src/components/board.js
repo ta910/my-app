@@ -1,9 +1,10 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import Square from './square';
 
 function Board(props) {
   function renderSquare(i) {
-    return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />
+    return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />;
   }
   return (
     <div>
@@ -23,7 +24,12 @@ function Board(props) {
         {renderSquare(8)}
       </div>
     </div>
-  )
+  );
 }
+
+Board.propTypes = {
+  squares: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Board;
