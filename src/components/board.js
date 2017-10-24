@@ -28,8 +28,8 @@ function Board(props) {
 }
 
 Board.propTypes = {
-  squares: PropTypes.arrayOf(PropTypes.array),
-  onClick: PropTypes.func,
-}.isRequired;
+  squares: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Board;

@@ -52,10 +52,10 @@ class Game extends React.Component {
 }
 
 Game.propTypes = {
-  dispatch: PropTypes.func,
-  history: PropTypes.arrayOf(PropTypes.node),
-  stepNumber: PropTypes.number,
-  xIsNext: PropTypes.bool,
-}.isRequired;
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.array.isRequired,
+  stepNumber: PropTypes.number.isRequired,
+  xIsNext: PropTypes.bool.isRequired,
+};
 
 export default connect(state => state)(Game);
